@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "b5e8d8e3-4b8f-4f8a-9b8a-9b8a9b8a9b8a",
+		"name": "Personas API",
+		"description": "Colección para probar la API de Personas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Persona",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Pérez\",\n    \"genero\": \"Masculino\",\n    \"telefono\": \"+56912345678\",\n    \"edad\": 30,\n    \"region\": \"Metropolitana\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/personas",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "3000",
+					"path": ["personas"]
+				},
+				"description": "Crea una nueva persona en la base de datos"
+			}
+		},
+		{
+			"name": "Obtener Todas las Personas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/personas",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "3000",
+					"path": ["personas"]
+				},
+				"description": "Obtiene el listado de todas las personas"
+			}
+		},
+		{
+			"name": "Filtrar Personas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/personas?edad=30&region=Metropolitana",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "3000",
+					"path": ["personas"],
+					"query": [
+						{
+							"key": "edad",
+							"value": "30"
+						},
+						{
+							"key": "region",
+							"value": "Metropolitana"
+						}
+					]
+				},
+				"description": "Filtra personas por edad y región"
+			}
+		},
+		{
+			"name": "Obtener Persona por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/personas/{{persona_id}}",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "3000",
+					"path": ["personas", "{{persona_id}}"]
+				},
+				"description": "Obtiene una persona específica por su ID"
+			}
+		},
+		{
+			"name": "Actualizar Persona",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Juan Carlos\",\n    \"apellido\": \"Pérez\",\n    \"genero\": \"Masculino\",\n    \"telefono\": \"+56912345678\",\n    \"edad\": 31,\n    \"region\": \"Metropolitana\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/personas/{{persona_id}}",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "3000",
+					"path": ["personas", "{{persona_id}}"]
+				},
+				"description": "Actualiza los datos de una persona existente"
+			}
+		},
+		{
+			"name": "Eliminar Persona",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/personas/{{persona_id}}",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "3000",
+					"path": ["personas", "{{persona_id}}"]
+				},
+				"description": "Elimina una persona por su ID"
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "persona_id",
+			"value": "",
+			"type": "string",
+			"description": "ID de la persona creada"
+		}
+	]
+} 
